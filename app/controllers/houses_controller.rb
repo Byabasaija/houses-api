@@ -1,10 +1,11 @@
 class HousesController < ApplicationController
-    before_action :set_house, only: [:show, :update, :destroy]
+  before_action :set_house, only: %i[show update destroy]
 
   # GET /houses
   def index
     @houses = House.all
     json_response(@houses)
+    @houses = @houses.favorited_by(params[:favorited]) if params[:favorited].present?
   end
 
   # POST /houses
