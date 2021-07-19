@@ -44,7 +44,7 @@ RSpec.describe "Houses", type: :request do
        end
  
        it 'returns a not found message' do
-         expect(response.body).to match(/Couldn't find house/)
+         expect(response.body).to match(/Couldn't find House/)
        end
      end
    end
@@ -52,7 +52,7 @@ RSpec.describe "Houses", type: :request do
    # Test suite for POST /houses
    describe 'POST /houses' do
      # valid payload
-     let(:valid_attributes) { { title: 'Learn Elm', created_by: '1' } }
+     let(:valid_attributes) { { name: 'Learn Elm', image_url: 'https://loremflickr.com/cache/resized/65535_50762589427_118aef63cf_z_300_300_nofilter.jpg', description: 'Find Cheap Houses for Sale in Kampala Uganda at very affordable prices. Buy homes also in Entebbe, Kira, Wakiso, Mukono, Jinja and many more areas.' } }
  
      context 'when the request is valid' do
        before { post '/houses', params: valid_attributes }
@@ -67,7 +67,7 @@ RSpec.describe "Houses", type: :request do
      end
  
      context 'when the request is invalid' do
-       before { post '/houses', params: { name: 'My House' } }
+       before { post '/houses', params: { name: 'My House', image_url: 'https://loremflickr.com/cache/resized/65535_50762589427_118aef63cf_z_300_300_nofilter.jpg' } }
  
        it 'returns status code 422' do
          expect(response).to have_http_status(422)
@@ -75,7 +75,7 @@ RSpec.describe "Houses", type: :request do
  
        it 'returns a validation failure message' do
          expect(response.body)
-           .to match(/Validation failed: Created by can't be blank/)
+           .to match(/Validation failed: Description can't be blank/)
        end
      end
    end
