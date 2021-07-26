@@ -3,6 +3,5 @@ class House < ApplicationRecord
   validates_presence_of :image_url
   validates_presence_of :description
 
-  has_many :favorites
-  scope :favorited_by, ->(name) { joins(:favorites).where(favorites: { user: User.where(name: name) }) }
+  has_many :favorites, dependent: :destroy
 end

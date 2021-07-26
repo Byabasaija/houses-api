@@ -1,22 +1,13 @@
 class FavoritesController < ApplicationController
-  # before_action :authenticate_user!
-  before_action :find_house!
-
+  skip_before_action :verify_authenticity_token
+  include CurrentUserConcern
   def create
-    current_user.favorite(@favorite)
+    @house = House.find(params[:house_id])
+      @favorite = Favorite.create!(user_id: @current_user.id, house_id: @house.id)
 
-    json_response(@favorite, :created)
-  end
-
-  def destroy
-    current_user.unfavorite(@favorite)
-
-    head :no_content
-  end
-
-  private
-
-  def find_house!
-    @favorite = House.find_by_id!(params[:house_id])
+      render json: {
+        status: :created_successfully,
+        favorites: @favorite
+      }
   end
 end

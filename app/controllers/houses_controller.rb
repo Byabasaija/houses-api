@@ -5,7 +5,7 @@ class HousesController < ApplicationController
   def index
     @houses = House.all
     json_response(@houses)
-    @houses = @houses.favorited_by(params[:favorited]) if params[:favorited].present?
+   
   end
 
   # POST /houses
@@ -17,6 +17,7 @@ class HousesController < ApplicationController
   # GET /houses/:id
   def show
     json_response(@house)
+    
   end
 
   # PUT /houses/:id

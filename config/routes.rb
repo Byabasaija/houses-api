@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :sessions, only: [:create, :show, :destroy]
+  resources :registrations, only: [:create]
   resources :houses do
-    resource :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:create]
   end
-  post 'auth/login', to: 'authentication#authenticate'
-  post 'signup', to: 'users#create'
+  resources :favorites, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
