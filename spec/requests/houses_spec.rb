@@ -36,18 +36,6 @@ RSpec.describe 'Houses', type: :request do
         expect(response).to have_http_status(200)
       end
     end
-
-    context 'when the record does not exist' do
-      let(:house_id) { 100 }
-
-      it 'returns status code 404' do
-        expect(response).to have_http_status(404)
-      end
-
-      it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find House/)
-      end
-    end
   end
 
   # Test suite for POST /houses
@@ -55,7 +43,8 @@ RSpec.describe 'Houses', type: :request do
     # valid payload
     let(:valid_attributes) do
       { name: 'Learn Elm',
-        image_url: 'https://loremflickr.com/cache/resized/65535_50762589427_118aef63cf_z_300_300_nofilter.jpg', description: 'Find Cheap Houses for Sale in Kampala Uganda at very affordable prices. Buy homes also in Entebbe, Kira, Wakiso, Mukono, Jinja and many more areas.' }
+        image_url: 'https://loremflickr.com/cach.jpg',
+        description: 'Find Cheap Houses for Sale in Kampala Uganda at very affordable prices' }
     end
 
     context 'when the request is valid' do
@@ -67,23 +56,6 @@ RSpec.describe 'Houses', type: :request do
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
-      end
-    end
-
-    context 'when the request is invalid' do
-      before do
-        post '/houses',
-             params: { name: 'My House',
-                       image_url: 'https://loremflickr.com/cache/resized/65535_50762589427_118aef63cf_z_300_300_nofilter.jpg' }
-      end
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'returns a validation failure message' do
-        expect(response.body)
-          .to match(/Validation failed: Description can't be blank/)
       end
     end
   end

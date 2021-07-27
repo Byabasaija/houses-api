@@ -5,7 +5,6 @@ class HousesController < ApplicationController
   def index
     @houses = House.all
     json_response(@houses)
-   
   end
 
   # POST /houses
@@ -17,7 +16,6 @@ class HousesController < ApplicationController
   # GET /houses/:id
   def show
     json_response(@house)
-    
   end
 
   # PUT /houses/:id
@@ -35,7 +33,6 @@ class HousesController < ApplicationController
   private
 
   def house_params
-    # whitelist params
     params.permit(:name, :image_url, :description)
   end
 
