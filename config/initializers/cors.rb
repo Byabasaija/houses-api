@@ -16,7 +16,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'https://find-your-houses.herokuapp.com/'
+    origins 'https://find-your-houses.herokuapp.com'
 
     resource '*',
       headers: :any,
