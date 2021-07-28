@@ -1,24 +1,45 @@
-# README
+# Houses-api
+A Rails 6 API built for the react front end find your house application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## 🔨 Built with
 
-* Configuration
+- Ruby on Rails 
+- Ruby 
+- rubocop linters
+- rspec
+- Vs code
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## How to run the test suite
 
-* Deployment instructions
+```
+ bundle exec rspec
+```
 
-* ...
+
+
+## 👨🏽‍ Creator
+
+👤 **Pascal**
+
+- Linkedin: [Pascal Byabasaija](https://www.linkedin.com/in/pascal-byabasaija/)
+- Github: [@Byabasaija](https://github.com/Byabasaija)
+- Twitter: [@byabashaijapoet](https://twitter.com/byabashaijapoet)
+
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
+

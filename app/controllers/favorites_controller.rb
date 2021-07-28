@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   skip_before_action :verify_authenticity_token
- 
+
   def create
     @current_user = User.find(params[:user_id])
     @house = House.find(params[:house_id])
