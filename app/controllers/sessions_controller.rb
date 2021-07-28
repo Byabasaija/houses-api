@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   end
 
   def show
-    @current_user = User.find(params[:user_id])
+    @current_user = User.find(params[:id])
     favorites = Favorite.where(user_id: @current_user.id).order(created_at: :desc).pluck(:house_id)
     @favorites = House.find(favorites)
     render json: {
