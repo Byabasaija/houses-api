@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :authorize_request
   before_action :set_house, only: %i[show update destroy]
 
   # GET /houses
