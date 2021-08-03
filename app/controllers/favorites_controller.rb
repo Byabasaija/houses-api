@@ -1,8 +1,15 @@
 class FavoritesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  def index
+    favorites = Favorite.favorites
+    @favorites = House.find(favorites)
+
+    render json: {
+      favorites: @favorites
+    }
+  end
 
   def create
-    @current_user = User.find(params[:user_id])
+    @current_user = User.find_by!(params[:user_id])
     @house = House.find(params[:house_id])
     @favorite = Favorite.create!(user_id: @current_user.id, house_id: @house.id)
 
