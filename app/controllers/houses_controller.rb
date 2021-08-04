@@ -19,7 +19,6 @@ class HousesController < ApplicationController
     json_response(@house)
   end
 
-
   private
 
   def house_params
