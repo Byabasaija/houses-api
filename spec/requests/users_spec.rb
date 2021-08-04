@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe 'Users', type: :request do
   let(:user) { build(:user) }
   let(:headers) { valid_headers.except('Authorization') }
   let(:valid_attributes) do
@@ -31,12 +31,13 @@ RSpec.describe "Users", type: :request do
       it 'does not create a new user' do
         expect(response).to have_http_status(422)
       end
-
+      # rubocop:disable Layout/LineLength
       it 'returns failure message' do
         expect(json['message'])
           .to match(/Validation failed: Password can't be blank, Username can't be blank, Password digest can't be blank/)
       end
     end
+    # rubocop:enable Layout/LineLength
   end
   describe 'POST /auth/login' do
     # create test user

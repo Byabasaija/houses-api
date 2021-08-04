@@ -9,7 +9,6 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @current_user = User.find_by!(params[:user_id])
     @house = House.find(params[:house_id])
     @favorite = Favorite.create!(user_id: @current_user.id, house_id: @house.id)
 
