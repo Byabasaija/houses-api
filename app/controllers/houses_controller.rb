@@ -19,22 +19,11 @@ class HousesController < ApplicationController
     json_response(@house)
   end
 
-  # PUT /houses/:id
-  def update
-    @house.update(house_params)
-    head :no_content
-  end
-
-  # DELETE /houses/:id
-  def destroy
-    @house.destroy
-    head :no_content
-  end
 
   private
 
   def house_params
-    params.permit(:name, :image_url, :description)
+    params.require(:house).permit(:name, :image_url, :description)
   end
 
   def set_house

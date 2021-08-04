@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :houses 
+  resources :houses, only: [:index, :create: :show] 
    
   resources :favorites, only: [:index, :create]
   post 'signup', to: 'users#create'
