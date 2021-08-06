@@ -4,7 +4,7 @@ class Message
   end
 
   def self.invalid_credentials
-    'Invalid credentials'
+    'Invalid credentials, please try again'
   end
 
   def self.invalid_token
@@ -29,5 +29,9 @@ class Message
 
   def self.expired_token
     'Sorry, your token has expired. Please login to continue.'
+  end
+
+  def logged_in
+    'You are logged in succcessfully'
   end
 end
