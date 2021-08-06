@@ -41,14 +41,14 @@ RSpec.describe 'Houses', type: :request do
   # Test suite for POST /houses
   describe 'POST /houses' do
     # valid payload
-    let(:valid_attributes) do
+    let(:house) do
       { name: 'Learn Elm',
         image_url: 'https://loremflickr.com/cach.jpg',
         description: 'Find Cheap Houses for Sale in Kampala Uganda at very affordable prices' }
     end
 
     context 'when the request is valid' do
-      before { post '/houses', params: valid_attributes }
+      before { post '/houses', params: house }
 
       it 'creates a house' do
         expect(json['name']).to eq('Learn Elm')
@@ -57,32 +57,6 @@ RSpec.describe 'Houses', type: :request do
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
       end
-    end
-  end
-
-  # Test suite for PUT /houses/:id
-  describe 'PUT /houses/:id' do
-    let(:valid_attributes) { { name: 'Horseman house' } }
-
-    context 'when the record exists' do
-      before { put "/houses/#{house_id}", params: valid_attributes }
-
-      it 'updates the record' do
-        expect(response.body).to be_empty
-      end
-
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
-      end
-    end
-  end
-
-  # Test suite for DELETE /houses/:id
-  describe 'DELETE /houses/:id' do
-    before { delete "/houses/#{house_id}" }
-
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
     end
   end
 end
