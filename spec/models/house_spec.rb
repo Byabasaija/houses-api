@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe House, type: :model do
-   # Association test
+  # Association test
   # ensure Todo model has a 1:m relationship with the Item model
   it { should have_many(:favorites) }
   # Validation tests

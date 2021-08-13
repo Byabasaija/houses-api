@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-    validates_presence_of :name
-    validates_presence_of :password_digest
+  has_secure_password
+  validates :username, presence: true
+  validates :password, presence: true
+  validates :username, uniqueness: true
 
-    has_many :favorites, dependent: :destroy
+  has_many :favorites
 end
